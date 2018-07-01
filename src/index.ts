@@ -189,7 +189,7 @@ async function letUsPlay(): Promise<void> {
 
     while( true ) {
         await playPage( fcoinBrower );
-        await sleep( 5 * 1000 );
+        await sleep( 10 * 1000 );
     }
 
 }
