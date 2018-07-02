@@ -4,6 +4,7 @@ import * as path from 'path';
 import * as http from 'http';
 import * as fs from 'fs';
 import * as crypto from 'crypto';
+import * as _ from 'lodash';
 import 'colors';
 const ethCrypto = require( 'eth-crypto' );
 
@@ -34,11 +35,13 @@ async function ready4FCoinServer(): Promise<void> {
 }
 
 async function ready4FcoinPage(): Promise<void> {
-    if ( null !== fcoinPage ) {
+    if ( false === _.isEmpty( fcoinPage ) ) {
         await fcoinPage.close();
+        fcoinPage = {} as Page;
     }
-    if ( null !== fcoinBrower ) {
+    if ( false === _.isEmpty( fcoinBrower ) ) {
         await fcoinBrower.close();
+        fcoinBrower = {} as Browser;
     }
 
     fcoinBrower = await puppeteer.launch();
