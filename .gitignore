@@ -3,3 +3,5 @@ build
 test_output
 nohup.out
 list.json
+imgs
+output.log

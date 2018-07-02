@@ -34,6 +34,13 @@ async function ready4FCoinServer(): Promise<void> {
 }
 
 async function ready4FcoinPage(): Promise<void> {
+    if ( null !== fcoinPage ) {
+        await fcoinPage.close();
+    }
+    if ( null !== fcoinBrower ) {
+        await fcoinBrower.close();
+    }
+
     fcoinBrower = await puppeteer.launch();
     fcoinPage = await fcoinBrower.newPage();
     await fcoinPage.setViewport( { width: 1430, height: 600 } );
@@ -199,7 +206,6 @@ async function start() {
     console.log( 'fcoin html server ready!'.green );
     await ready4FcoinPage();
     console.log( 'fcoin html page ready!'.green );
-
     await letUsPlay();
 }
 
